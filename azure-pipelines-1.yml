@@ -3,7 +3,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: 'windows-latest'
+      name: 'ubuntu-latest'
     steps:
     - script: echo "Building the application"
 
@@ -11,7 +11,7 @@ stages:
   jobs:
   - job: TestJob
     pool:
-      vmImage: 'windows-latest'
+      name: 'ubuntu-latest'
     dependsOn: Build
     steps:
     - script: echo "Running tests"
@@ -20,7 +20,7 @@ stages:
   jobs:
   - job: DeployJob
     pool:
-      vmImage: 'windows-latest'
+      name: 'ubuntu-latest'
     dependsOn: Test
     steps:
     - script: echo "Deploying the application"
