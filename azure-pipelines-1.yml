@@ -1,5 +1,26 @@
-trigger:
-  - main
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'windows-latest'
+    steps:
+    - script: echo "Building the application"
 
-pool:
-  vmImage: 'Azure Pipelines'
+- stage: Test
+  jobs:
+  - job: TestJob
+    pool:
+      vmImage: 'windows-latest'
+    dependsOn: Build
+    steps:
+    - script: echo "Running tests"
+
+- stage: Deploy
+  jobs:
+  - job: DeployJob
+    pool:
+      vmImage: 'windows-latest'
+    dependsOn: Test
+    steps:
+    - script: echo "Deploying the application"
