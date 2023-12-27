@@ -1,0 +1,9 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest # This is the default if you don't specify a pool or vmImage.
+
+steps:
+- script: echo "Hello, World!"
+  displayName: 'Run a simple script'
